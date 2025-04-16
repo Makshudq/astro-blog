@@ -1,0 +1,25 @@
+---
+const { data } = Astro.props;
+const {frontmatter, url} = data
+console.log(url,'dataCard.......')
+const { title, description, date, image, author } = frontmatter;
+---
+
+<div class="itemCenter shadow-xl p-2 rounded p-8">
+  <h1 class="m-2 font-bold">{title}</h1>
+  <img src={image.src} alt="" />
+  <small class="m-2">{author} <span>{new Date(date).getFullYear()}</span></small>
+  <!-- <Image src={image.src} width={400} height={600} alt={image.alt || title} /> -->
+  <a href={url}
+    ><button class="bg-blue-700 text-white px-3 py-1 rounded m-2">Read</button
+    ></a
+  >
+  <h4 class="text-center">
+    {description}
+  </h4>
+</div>
+
+  
+
+  
+ 

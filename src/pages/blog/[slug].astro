@@ -1,0 +1,22 @@
+---
+export const posts = [
+  { slug: "post1", title: "Hello World" },
+  { slug: "post2", title: "Second Post" },
+];
+
+export async function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props:{data: post.title}
+  }));
+}
+
+
+const { slug } = Astro.params;
+const { data } = Astro.props;
+// console.log(data, "function---")
+
+let posto = posts.find((post) => post.slug === slug);
+---
+
+<h1>{slug} <br /> {posto?.title}</h1>

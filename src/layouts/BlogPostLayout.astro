@@ -1,0 +1,33 @@
+---
+import Layout from "./Layout.astro";
+
+const { frontmatter } = Astro.props;
+
+const { title, description, date, image, author } = frontmatter;
+---
+
+<Layout {title}>
+  <header class="postHeader itemCenter">
+    <h1>{title}</h1>
+    <a href={"/category/1"}>Category</a>
+    <p>{author} <span>{new Date(date).getFullYear()}</span></p>
+    <img src={image.src} alt="" />
+    <!-- <Image src={image.src} width={400} height={600} alt={image.alt || title} /> -->
+
+    <h4>
+      {description}
+    </h4>
+  </header>
+  <div style={{ maxWidth: "1200px", margin: "auto", paddingBottom: "2rem" }}>
+    <slot />
+  </div>
+</Layout>
+
+<style>
+  .postHeader {
+    max-width: 600px;
+  }
+  h4 {
+    text-align: center;
+  }
+</style>

@@ -1,0 +1,51 @@
+---
+import { navData } from "../data/navData";
+---
+
+<nav>
+  <div class="navDiv">
+    <ul>
+      {
+        navData.map((item) => (
+          <li>
+            <a href={item.path}>{item.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .navDiv {
+    box-shadow: 0 0 30px 30px whitesmoke;
+    height: 3rem;
+  }
+  ul {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    float: right;
+    margin-right: 3rem;
+  }
+
+  ul li {
+    list-style: none;
+    margin-top: 10px;
+  }
+  a {
+    text-decoration: none;
+  }
+</style>
+
+<script>
+  let element = document.querySelectorAll("a");
+  element.forEach((element) => {
+    if (element.getAttribute("href") === window.location.pathname) {
+      element.setAttribute("class", "active-link");
+    }
+  });
+  if (window.location.pathname) {
+  }
+  console.log(element);
+</script>
