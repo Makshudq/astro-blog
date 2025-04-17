@@ -1,16 +1,18 @@
 ---
 const { data } = Astro.props;
-const {frontmatter, url} = data
-console.log(url,'dataCard.......')
+// const {url} = Astro.params
+
+const { frontmatter, file } = data;
 const { title, description, date, image, author } = frontmatter;
+console.log(file.split("/").pop().replace(".md",""),'paramssss')
 ---
 
 <div class="itemCenter shadow-xl p-2 rounded p-8">
   <h1 class="m-2 font-bold">{title}</h1>
   <img src={image.src} alt="" />
-  <small class="m-2">{author} <span>{new Date(date).getFullYear()}</span></small>
-  <!-- <Image src={image.src} width={400} height={600} alt={image.alt || title} /> -->
-  <a href={url}
+  <small class="m-2">{author} <span>{new Date(date).getFullYear()}</span></small
+  >
+  <a href={`/blog/${file.split("/").pop().replace(".md","")}`}
     ><button class="bg-blue-700 text-white px-3 py-1 rounded m-2">Read</button
     ></a
   >
@@ -18,8 +20,3 @@ const { title, description, date, image, author } = frontmatter;
     {description}
   </h4>
 </div>
-
-  
-
-  
- 
